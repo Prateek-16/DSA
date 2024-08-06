@@ -64,3 +64,88 @@ public:
         
     }
 };
+
+Another similar but easier way with 2 pointers 
+
+// CPP program to print intersection of lists
+#include <bits/stdc++.h>
+using namespace std;
+
+/* Link list node */
+class Node {
+public:
+    int data;
+    Node* next;
+      Node(int x) {
+        data = x;
+         next = NULL;
+    }
+};
+
+// A utility function to return  intersection node
+Node* intersectPoint(Node* head1, Node* head2)
+{
+    // Maintaining two pointers ptr1 and ptr2
+    Node* ptr1 = head1;
+    Node* ptr2 = head2;
+
+    if (ptr1 == NULL || ptr2 == NULL)
+        return NULL;
+
+    while (ptr1 != ptr2) {
+
+        ptr1 = ptr1->next;
+        ptr2 = ptr2->next;
+
+        if (ptr1 == ptr2)
+            return ptr1;
+
+        // When ptr1 reaches the end of a list, then
+        // reassign it to the head2.
+        if (ptr1 == NULL)
+            ptr1 = head2;
+        // When ptr2 reaches the end of a list, then
+        // redirect it to the head1.
+        if (ptr2 == NULL)
+            ptr2 = head1;
+    }
+    return ptr1;
+}
+
+// Driver code
+int main()
+{
+    /*
+    Create two linked lists
+
+    1st Linked list is 3->6->9->15->30
+    2nd Linked list is 10->15->30
+
+    15 30 are elements in the intersection list
+    */
+
+    Node* newNode;
+    Node* head1 = new Node(10);
+    Node* head2 = new Node(3);
+    newNode = new Node(6);
+    head2->next = newNode;
+    newNode = new Node(9);
+    head2->next->next = newNode;
+    newNode = new Node(15);
+    head1->next = newNode;
+    head2->next->next->next = newNode;
+    newNode = new Node(30);
+    head1->next->next = newNode;
+    head1->next->next->next = NULL;
+    Node* intersect_node = NULL;
+
+    // Find the intersection node of two linked lists
+    intersect_node = intersectPoint(head1, head2);
+    if(intersect_node == NULL)
+      cout << "No intersection Point";
+      else 
+      cout << "Intersection Point = " << intersect_node->data << "\n";
+    return 0;
+}
+
+// This code is contributed by Aditya Kumar (adityakumar129)
