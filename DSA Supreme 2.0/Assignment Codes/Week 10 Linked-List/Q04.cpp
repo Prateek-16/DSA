@@ -56,12 +56,7 @@ public:
                 headB=headB->next;
             }
         }
-        return headA;
-
-
-        
-
-        
+        return headA;   
     }
 };
 
@@ -147,5 +142,3 @@ int main()
       cout << "Intersection Point = " << intersect_node->data << "\n";
     return 0;
 }
-
-// This code is contributed by Aditya Kumar (adityakumar129)
