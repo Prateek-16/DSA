@@ -56,3 +56,36 @@ so we have :
                 and if outside the loop return true
             
 */
+
+
+class Solution {
+public:
+    bool ispossible(vector<int>& piles, int h,int& k){
+        for(auto &it : piles){
+            int hours_taken = ceil(floor(it)/floor(k));
+            h -= hours_taken;
+            if(h < 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int start = 1;
+        int end = *max_element(piles.begin(), piles.end());
+        int mid = start + (end - start) / 2;
+        int k = end;
+        
+        while (start <= end) {
+            if(ispossible(piles,h,mid)){
+                end = mid - 1;
+                k = min(k,mid);
+            }
+            else{
+                start = mid + 1;
+            }
+            mid = start + (end - start) / 2;
+        }
+        return k;
+    }
+};
