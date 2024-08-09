@@ -34,3 +34,39 @@ bool function dfs Inputs : grid, total row and col, current cell i and j , word 
     recursive calls in all 4 directions with index + 1
     backtrack so grid[i][j] = word[index]   (restoring the character)
 */
+
+class Solution {
+public:
+    bool dfs(vector<vector<char>>& board, string word, int index, int i, int j, int row,int col) {
+        if (i < 0 || i >= row || j < 0 || j >= col || board[i][j] != word[index] ) {
+            return false;
+        }
+        if (index == word.length() - 1) {
+            return true;
+        }
+
+        board[i][j] = '#';
+        if (dfs(board, word, index + 1, i - 1, j, row, col) ||
+            dfs(board, word, index + 1, i + 1, j, row, col) ||
+            dfs(board, word, index + 1, i, j - 1, row, col) ||
+            dfs(board, word, index + 1, i, j + 1, row, col)) {
+            return true;
+        }
+        board[i][j] = word[index];
+        return false;
+    }
+    bool exist(vector<vector<char>>& board, string word) {
+        int m = board.size();
+        int n = board[0].size();
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == word[0]) {
+                    if (dfs(board, word, 0, i, j, m, n)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+};
