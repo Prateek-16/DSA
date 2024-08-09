@@ -58,3 +58,46 @@ FOr example :
 
 
 */
+
+
+class Solution {
+public:
+    void partition_helper(string s,int index,vector<string>&curr,vector<vector<string>>&ans){
+        if(index>=s.length()){
+            ans.push_back(curr);
+            return;
+        }
+        for(int i=index;i<s.length();i++){
+            string r = s.substr(index, i - index + 1);
+            if(ispalindrome(r)){
+                curr.push_back(r);
+                partition_helper(s,i+1,curr,ans);
+                curr.pop_back();
+            }
+        }
+        return;
+    }
+
+    bool ispalindrome(string st){
+        int s=0;
+        int e=st.length()-1;
+        while(s<e){
+            if(st[s]!=st[e]){
+                return false;
+            }
+            s++;
+            e--;
+        }
+        return true;
+    }
+    vector<vector<string>> partition(string s) {
+        vector<string>curr;
+        vector<vector<string>>ans;
+        partition_helper(s,0,curr,ans);
+        return ans;
+
+
+
+        
+    }
+};
