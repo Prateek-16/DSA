@@ -36,22 +36,16 @@ public:
 };
 
 
+
 class Solution {
  public:
-  bool isBalanced(TreeNode* root) {
-    bool ans = true;
-    maxDepth(root, ans);
-    return ans;
-  }
-
-  // Returns the height of root and sets ans to false if root unbalanced.
-  int maxDepth(TreeNode* root, bool& ans) {
-    if (root == nullptr || !ans)
-      return 0;
-    const int left = maxDepth(root->left, ans);
-    const int right = maxDepth(root->right, ans);
-    if (abs(left - right) > 1)
-      ans = false;
-    return max(left, right) + 1;
+  TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+    if (root == nullptr || root == p || root == q)
+      return root;
+    TreeNode* left = lowestCommonAncestor(root->left, p, q);
+    TreeNode* right = lowestCommonAncestor(root->right, p, q);
+    if (left != nullptr && right != nullptr)
+      return root;
+    return left == nullptr ? right : left;
   }
 };
