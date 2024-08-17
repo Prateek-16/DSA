@@ -2,6 +2,8 @@
 
 //Car fleet 2
 
+
+/*
 Steps 
 1. Stack will have those cars which may collide
 2. Simple baat hai kisi bhi new car ka time for collision nikalna hai toh 
@@ -10,6 +12,7 @@ sabse pehele stack se woh cars hata do jo usse tej ho speed mai
 4. Ab bas yeh condition dekhlo ki jitne time mai humari current car slower car se collide kar rhi hai usse pehele slower car kisi aur car se toh collide nhi kar ja rahi
 5. If false then toh current car slow car se collide karegi and time save kar lo and current car ko stack mai dal dena
 6. But agar slow car kisi aur se collide kar jati hai toh slower car ab us car ka part ban jati hai so uska stack mai koi need nhi so pop it, and current car ka collision time slower ke collided car se find karo 
+*/
 
 
 class Solution {
