@@ -80,7 +80,8 @@ void printRightBoundary(Node* root){
         printRightBoundary(root->left);
     }
 
-    cout<< root->data << " ";      //yeh cout end mai because we need right boundary traversal in reverse order
+    cout<< root->data << " ";
+//yeh cout end mai because we need right boundary traversal in reverse order
 }
 
 void boundaryTraversal(Node* root){
