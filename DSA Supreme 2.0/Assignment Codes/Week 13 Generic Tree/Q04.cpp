@@ -1,4 +1,4 @@
-// https://www.geeksforgeeks.org/problems/diagonal-traversal-of-binary-tree/1
+https://www.geeksforgeeks.org/problems/diagonal-traversal-of-binary-tree/1
 
 // Diagonal Traversal of binary tree
 
