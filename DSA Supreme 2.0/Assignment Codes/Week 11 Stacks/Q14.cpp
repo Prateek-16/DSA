@@ -2,6 +2,49 @@
 
 //remove K digits
 
+
+class Solution {
+public:
+    string removeKdigits(string num, int k) {
+        stack<char> st;
+        
+        for (char ele : num) {
+            // While the current digit is smaller than the top of the stack, 
+            // and we still have digits to remove (k > 0)
+            while (!st.empty() && k > 0 && st.top() > ele) {
+                st.pop();
+                k--;
+            }
+            // Avoid pushing leading zeros onto the stack
+            if (!st.empty() || ele != '0') {
+                st.push(ele);
+            }
+        }
+        
+        // If k is still greater than 0, pop the remaining digits from the stack
+        while (k > 0 && !st.empty()) {
+            st.pop();
+            k--;
+        }
+        
+        // Build the final answer string from the stack
+        string ans;
+        while (!st.empty()) {
+            ans.push_back(st.top());
+            st.pop();
+        }
+        
+        // Reverse the string since the stack gives the digits in reverse order
+        reverse(ans.begin(), ans.end());
+        
+        // If the result is empty, return "0"
+        return ans.empty() ? "0" : ans;
+    }
+};
+
+
+***********************************************************
+
 class Solution {
 public:
     string removeKdigits(string num, int k) {
