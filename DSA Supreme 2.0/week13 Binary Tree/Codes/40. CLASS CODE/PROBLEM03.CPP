@@ -26,55 +26,6 @@ class Node{
         }
 };
 
-// It returns the root node of created tree
-Node* createTree(){
-    cout<< "Enter the value: " << endl;
-    int data;
-    cin >> data;
-
-    if(data == -1){
-        return NULL;
-    }
-
-    // Step 1: Create Node
-    Node* root = new Node(data);
-    // Step 2: Create Left Subtree
-    root->left = createTree();
-    // Step 3: Create Right Subtree
-    root->right = createTree();
-
-    return root;
-}
-
-// Level order traversal in level wise
-void levelOrderTraversalLevelWise(Node* root){
-    queue<Node*> q;
-    q.push(root);
-    q.push(NULL);
-
-    while(!q.empty()){
-        Node* frontNode = q.front();
-        q.pop();
-        
-        if(frontNode == NULL){
-            cout<<endl;
-            if(!q.empty()){ 
-                q.push(NULL);
-            }
-        }
-        else{
-            cout<< frontNode->data << " ";
-
-            if(frontNode->left != NULL){
-                q.push(frontNode->left);
-            }
-            if(frontNode->right != NULL){
-                q.push(frontNode->right);
-            }
-        }
-    }
-}
-
 // Top View of Binary Tree
 void printTopView(Node* root){
     map<int, int> hdToNodeMap; // < level, data >
