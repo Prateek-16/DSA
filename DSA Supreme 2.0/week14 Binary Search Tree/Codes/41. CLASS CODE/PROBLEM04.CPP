@@ -30,8 +30,6 @@ class Node{
         }
 };
 
-
-
 // Target value found or not
 bool searchInBST(Node* root, int target){
     // Base Case
