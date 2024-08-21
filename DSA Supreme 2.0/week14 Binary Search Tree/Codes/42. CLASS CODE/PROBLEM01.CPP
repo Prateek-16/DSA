@@ -28,35 +28,6 @@ class Node{
         }
 };
 
-// Level order traversal in level wise
-void levelOrderTraversalLevelWise(Node* root){
-    queue<Node*> q;
-    q.push(root);
-    q.push(NULL);
-
-    while(!q.empty()){
-        Node* frontNode = q.front();
-        q.pop();
-        
-        if(frontNode == NULL){
-            cout<<endl;
-            if(!q.empty()){ 
-                q.push(NULL);
-            }
-        }
-        else{
-            cout<< frontNode->data << " ";
-
-            if(frontNode->left != NULL){
-                q.push(frontNode->left);
-            }
-            if(frontNode->right != NULL){
-                q.push(frontNode->right);
-            }
-        }
-    }
-}
-
 Node* bstFromInorder(int inorder[], int start, int end){
     // Base case 
     if(start > end){
