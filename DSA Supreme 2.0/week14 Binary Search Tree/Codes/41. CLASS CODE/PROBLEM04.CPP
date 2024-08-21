@@ -44,18 +44,13 @@ bool searchInBST(Node* root, int target){
         return true;
     }
 
-    bool right = false;
-    bool left = false;
-
     // ab recursion solve kar lega
     if(target > root->data){
-        right = searchInBST(root->right, target);
+        return searchInBST(root->right, target);
     }
     if(target < root->data){
-        left = searchInBST(root->left, target);
+        return searchInBST(root->left, target);
     }
-
-    return right || left;
 }
 
 int main(){
