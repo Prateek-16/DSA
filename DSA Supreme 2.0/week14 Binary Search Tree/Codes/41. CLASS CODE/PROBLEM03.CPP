@@ -30,69 +30,6 @@ class Node{
         }
 };
 
-// CREATE BINARY SEARCH TREE
-Node* inserIntoBST(Node* root, int data){
-    // Create first node when root is null
-    if(root == NULL){
-        Node* root = new Node(data);
-        return root;
-    }
-
-    // Not for first Node
-    if(data > root->data){
-        // Right Sub Tree
-        root->right = inserIntoBST(root->right, data);
-    }
-    else{
-        // Left Sub Tree
-        root->left = inserIntoBST(root->left, data);
-    }
-
-    return root;
-}
-
-void createBST(Node* &root){
-    cout<< "Enter Data: " << endl;
-    int data;
-    cin >> data;
-
-    while (data != -1)
-    {
-        root = inserIntoBST(root, data);
-        cin >> data;
-    }
-    
-}
-
-// Level order traversal in level wise
-void levelOrderTraversalLevelWise(Node* root){
-    queue<Node*> q;
-    q.push(root);
-    q.push(NULL);
-
-    while(!q.empty()){
-        Node* frontNode = q.front();
-        q.pop();
-        
-        if(frontNode == NULL){
-            cout<<endl;
-            if(!q.empty()){ 
-                q.push(NULL);
-            }
-        }
-        else{
-            cout<< frontNode->data << " ";
-
-            if(frontNode->left != NULL){
-                q.push(frontNode->left);
-            }
-            if(frontNode->right != NULL){
-                q.push(frontNode->right);
-            }
-        }
-    }
-}
-
 // Min value of BST
 Node* minValue(Node* root){
     if(root == NULL){
